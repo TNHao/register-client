@@ -6,7 +6,8 @@ import Input from "../Input";
 import * as S from "./styles";
 import postData from "../../utils/postData";
 
-const API_DOMAIN = "https://register-server.vercel.app";
+// const API_DOMAIN = "https://register-server.vercel.app";
+const API_DOMAIN = "http://localhost:5000";
 
 const Form = () => {
   const [user, setUser] = useState({});
