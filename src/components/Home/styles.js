@@ -47,42 +47,7 @@ export const Wrapper = styled.div`
   }
 `;
 
-export const DoubleContainer = styled.div`
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: 1.2rem;
-`;
-
 export const WrapperButton = styled.div`
   display: flex;
   justify-content: center;
-`;
-
-export const WrapperInfo = styled.div`
-  display: flex;
-  flex-direction: column;
-  gap: 1rem;
-
-  h3 {
-    color: #4481eb;
-  }
-
-  h3,
-  h4 {
-    margin: 0;
-  }
-
-  div {
-    display: flex;
-    align-items: end;
-    gap: 0.5rem;
-  }
-`;
-
-export const Error = styled.div`
-  h1 {
-    margin: 0;
-    color: #df5555;
-    font-size: 24px;
-  }
 `;

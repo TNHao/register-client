@@ -78,3 +78,11 @@ export const WrapperInfo = styled.div`
     gap: 0.5rem;
   }
 `;
+
+export const Error = styled.div`
+  h1 {
+    margin: 0;
+    color: #df5555;
+    font-size: 24px;
+  }
+`;

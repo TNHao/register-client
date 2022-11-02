@@ -1,13 +1,15 @@
 import { yupResolver } from "@hookform/resolvers/yup";
-import { useForm } from "react-hook-form";
+import { useState } from "react";
+import { set, useForm } from "react-hook-form";
 import { useNavigate } from "react-router-dom";
 import { API_DOMAIN } from "../../constants";
 import postData from "../../utils/postData";
-import { schema } from "../../validators/schema";
+import { registerSchema } from "../../validators/schema";
 import Input from "../Input";
 import * as S from "./styles";
 
 const Form = () => {
+  const [error, setError] = useState(" ");
   let navigate = useNavigate();
   const maskPhone = {
     values: ["(99) 9999-9999", "(99) 99999-9999"],
@@ -19,12 +21,16 @@ const Form = () => {
     handleSubmit,
     formState: { errors },
   } = useForm({
-    resolver: yupResolver(schema),
+    resolver: yupResolver(registerSchema),
   });
 
   const onSubmit = async (data) => {
     const user = await postData(API_DOMAIN + "/users/register", data);
-    navigate(`/users?email=${user.email}`);
+    if (user.error) {
+      setError(user.error);
+    } else {
+      navigate(`/users?email=${user.email}`);
+    }
   };
 
   return (
@@ -65,7 +71,9 @@ const Form = () => {
             label="Confirm Password"
           />
         </S.DoubleContainer>
-
+        <S.Error>
+          <h1>{error}</h1>
+        </S.Error>
         <S.WrapperButton>
           <button className="btn-hover" type="submit">
             Submit
